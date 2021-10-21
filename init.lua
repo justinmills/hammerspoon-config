@@ -8,6 +8,7 @@ ell_asus = "ASUS VP28U"
 laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
 dell_speakers = home_dell
+airpods = "Justin’s AirPods Pro"
 
 local log = hs.logger.new('justin', 'debug')
 
@@ -243,12 +244,18 @@ function useAudio(speakers)
   currentDevice = hs.audiodevice.defaultOutputDevice()
   print("Current device is: " .. currentDevice:name())
   print("Looking for speakers: " .. speakers)
-  device = hs.audiodevice.findDeviceByName(speakers)
+  -- device = hs.audiodevice.findDeviceByName(speakers)
+  device = hs.audiodevice.findOutputByName(speakers)
   if (device ~= nil) then
     print("Found the audio device")
     if (currentDevice:name() ~= speakers) then
-      print("Not currently using the speakers requested, so let's use it")
-      device:setDefaultOutputDevice()
+      print("Not currently using the audio device requested, so let's use it")
+      success = device:setDefaultOutputDevice()
+      if success ~= true then
+        print("Unable to switch to the requested device")
+      end
+    else
+      print("Currently using the requested device, nothing more to do.")
     end
   end
 end
@@ -276,6 +283,8 @@ hs.urlevent.bind(
       speakers = usb_speakers
     elseif device == "dell" then
       speakers = dell_speakers
+    elseif device == "airpods" then
+      speakers = airpods
     end
     -- hs.alert.show("Changing to audio: " .. device)
     hs.notify.new({title="Changing audio", informativeText="speakers: " .. speakers}):send()
