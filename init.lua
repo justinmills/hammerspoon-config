@@ -9,6 +9,7 @@ laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
 dell_speakers = home_dell
 airpods = "Justin’s AirPods Pro"
+irig = "iRig HD 2"
 
 local log = hs.logger.new('justin', 'debug')
 
@@ -238,7 +239,8 @@ end)
 screenwatcher:start()
 
 -- -----------------------------------------------------------------------------
--- Watch for audio event changes and when connected to a USB hub, use it for audio.
+-- Watch for audio event changes and (optionally) automatically switch when
+-- connected to certain devices.
 
 function useAudio(speakers)
   currentDevice = hs.audiodevice.defaultOutputDevice()
@@ -285,6 +287,8 @@ hs.urlevent.bind(
       speakers = dell_speakers
     elseif device == "airpods" then
       speakers = airpods
+    elseif device == "irig" then
+      speakers = irig
     end
     -- hs.alert.show("Changing to audio: " .. device)
     hs.notify.new({title="Changing audio", informativeText="speakers: " .. speakers}):send()
