@@ -12,4 +12,4 @@ you can via the following:
 
 In order to bootstrap the installation, you'll need to manually download the
 [SpoonInstall](https://www.hammerspoon.org/Spoons/SpoonInstall.html) spoon and
-put it in the [Spoons](./Spoons) directory.
+unzip it in the [Spoons](./Spoons) directory.
