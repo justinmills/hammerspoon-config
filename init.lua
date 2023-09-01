@@ -9,6 +9,7 @@ laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
 dell_speakers = home_dell
 airpods = "Justin’s AirPods Pro"
+airpods_work = "Justin’s AirPods Pro - Find My"
 irig = "iRig HD 2"
 
 local log = hs.logger.new('justin', 'debug')
@@ -286,7 +287,8 @@ hs.urlevent.bind(
     elseif device == "dell" then
       speakers = dell_speakers
     elseif device == "airpods" then
-      speakers = airpods
+      -- todo: need to add connect via bluetooth here too
+      speakers = airpods_work
     elseif device == "irig" then
       speakers = irig
     end
