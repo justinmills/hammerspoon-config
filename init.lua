@@ -4,10 +4,12 @@ hyper_m1 = {"cmd", "ctrl", "shift"}
 laptop_monitor = "Built-in Retina Display"
 home_dell = "DELL P2715Q"
 ell_asus = "ASUS VP28U"
+home_lg = "LG HDR WQHD"
 
 laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
 dell_speakers = home_dell
+lg_speakers = home_lg
 airpods = "Justin’s AirPods Pro"
 airpods_work = "Justin’s AirPods Pro - Find My"
 irig = "iRig HD 2"
@@ -263,18 +265,6 @@ function useAudio(speakers)
   end
 end
 
-function useLaptopAudio()
-  useAudio(laptop_speakers)
-end
-
-function useUsbAudio()
-  useAudio(usb_speakers)
-end
-
-function useDellAudio()
-  useAudio(dell_speakers)
-end
-
 -- Provide some nifty url-based hooks to trigger these
 -- Test with open -g hammerspoon://changeAudio?device=dell
 hs.urlevent.bind(
@@ -286,6 +276,8 @@ hs.urlevent.bind(
       speakers = usb_speakers
     elseif device == "dell" then
       speakers = dell_speakers
+    elseif device == "lg" then
+      speakers = lg_speakers
     elseif device == "airpods" then
       -- todo: need to add connect via bluetooth here too
       speakers = airpods_work
@@ -297,14 +289,6 @@ hs.urlevent.bind(
     useAudio(speakers)
   end
 )
-
--- I've disabled this because I've switched to using my laptop audio so I can control the volume
--- more easily from key keyboard. But...if you want to revert to have it auto go to headphones (usb)
--- or my speakers (dell), then re-enable one of these and start it.
---
--- usbAudioWatcher = hs.usb.watcher.new(useUsbAudio)
--- usbAudioWatcher = hs.usb.watcher.new(useDellAudio)
--- usbAudioWatcher:start()
 
 -- -----------------------------------------------------------------------------
 -- Open iTunes and refresh podcasts
