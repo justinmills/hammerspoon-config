@@ -99,6 +99,11 @@ function moveToOtherMonitor()
   end
 
   local win = hs.window.focusedWindow()
+  -- Debug case where slack returned nil for the above so it was impossible to move it. Hoping an update to it will fix it.
+  -- local win2 = hs.window.frontmostWindow()
+  -- print("win data")
+  -- print(win)
+  -- print(win2)
 
   local otherScreen = hs.fnutils.find(screens, function(screen) return screen ~= win:screen() end)
   win:moveToScreen(otherScreen)
