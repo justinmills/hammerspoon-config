@@ -159,7 +159,7 @@ layouts = {
       -- {"Kiwi for Gmail Lite", nil, laptop_monitor, positions.maximized, nil, nil},
       {"iTerm2", "", laptop_monitor, positions.maximized, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
-      {"Spotify", nil, laptop_monitor, positions.maximized, nil, nil},
+      -- {"Spotify", nil, laptop_monitor, positions.maximized, nil, nil},
     }
   },
   {
@@ -186,7 +186,7 @@ layouts = {
       -- {"Messages", nil, laptop_monitor, positions.messages, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
       -- {"Spotify", nil, laptop_monitor, positions.maximized, nil, nil},
-      {"Spotify", nil, monitor1, positions.centered, nil, nil},
+      -- {"Spotify", nil, monitor1, positions.centered, nil, nil},
     }
   }
 }
@@ -294,6 +294,39 @@ hs.urlevent.bind(
     useAudio(speakers)
   end
 )
+
+
+-- -----------------------------------------------------------------------------
+-- Watch for usb device changes and do things when they attach/detach.
+
+-- This requires a more complex solution like unpairing-repairing and main not
+-- fully work when the other system is asleep (e.g. can you force pair?) More
+-- detail in this thread:
+-- https://apple.stackexchange.com/questions/399829/best-way-to-switch-magic-keyboard-and-trackpad-between-work-personal-macs
+
+-- function toggleMagicTrackpad(connected)
+--   if connected then
+--     hs.notify.new({title="DAS Keyboard", informativeText="Connected, attempting to connect to MagicTrackpad"}):send()
+--   else
+--     hs.notify.new({title="DAS Keyboard", informativeText="Disconnected, disconnect MagicTrackpad"}):send()
+--   end
+-- end
+
+-- Install:andUse(
+--   "USBDeviceActions",
+--   {
+--     config = {
+--       devices = {
+--         ["Das Keyboard"] = { fn = toggleMagicTrackpad }
+--       }
+--     },
+--     start = true
+--   }
+-- )
+-- print("Attached USB devices:")
+-- hs.fnutils.each(hs.usb.attachedDevices(), function(device)
+--   print("\t" .. device.productName)
+-- end)
 
 -- -----------------------------------------------------------------------------
 -- Open iTunes and refresh podcasts
