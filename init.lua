@@ -5,6 +5,8 @@ laptop_monitor = "Built-in Retina Display"
 home_dell = "DELL P2715Q"
 ell_asus = "ASUS VP28U"
 home_lg = "LG HDR WQHD"
+-- Alias my "big" home monitor for auto-layout to work
+home_monitor = home_lg
 
 laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
@@ -234,7 +236,7 @@ screenwatcher = hs.screen.watcher.new(function()
       if #newAllScreens == 1 and hs.fnutils.contains(names, laptop_monitor) then
         print("Back to the laptop layout")
         applyLayout(layouts[1])
-      elseif #newAllScreens == 2 and (hs.fnutils.contains(names, home_dell) or hs.fnutils.contains(names, ell_asus)) then
+      elseif #newAllScreens == 2 and (hs.fnutils.contains(names, home_monitor)) then
         print("External monitor layout")
         applyLayout(layouts[2])
       else
