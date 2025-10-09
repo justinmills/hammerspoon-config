@@ -147,7 +147,8 @@ positions = {
   lower50Right50 = {x=0.5, y=0.5, w=0.5, h=0.5},
 
   messages = {x=0.45, y=0, w=0.55, h=0.9},
-  devtools = {x=0.1, y=0.15, w=0.6, h=0.7}
+  devtools = {x=0.1, y=0.15, w=0.6, h=0.7},
+  amplitube = {x=0.55, y=0.15, w=0.40, h=1.0}
 }
 
 layouts = {
@@ -189,6 +190,10 @@ layouts = {
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
       -- {"Spotify", nil, laptop_monitor, positions.maximized, nil, nil},
       -- {"Spotify", nil, monitor1, positions.centered, nil, nil},
+
+      {"Music", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Messages", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Amplitube 5", nil, monitor1, positions.amplitube, nil, nil},
     }
   }
 }
