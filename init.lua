@@ -169,33 +169,31 @@ layouts = {
     name = "External Monitor",
     description = "layout for use with the big external monitor",
     layout = {
-      {"Emacs", nil, monitor1, positions.maximized, nil, nil},
-      -- {"IntelliJ IDEA", nil, monitor1, positions.maximized, nil, nil},
-
-      {"Google Chrome", nil, monitor1, positions.right66, nil, nil},
-      {"Google Chrome", "DevTools", monitor1, positions.devtools, nil, nil},
-      -- {"Kiwi for Gmail Lite", nil, monitor1, positions.centered, nil, nil},
-      -- {"Databricks", nil, monitor1, positions.centered, nil, nil},
-      -- {"AWS", nil, monitor1, positions.centered, nil, nil},
-
+      {"Emacs", nil, home_monitor, positions.maximized, nil, nil},
+      {"Google Chrome", nil, home_monitor, positions.right66, nil, nil},
+      {"Google Chrome", "DevTools", home_monitor, positions.devtools, nil, nil},
       -- A few alias' for the various tabs I have open and may be on top in my iTerm2
-      {"iTerm2", "code", monitor1, positions.left66, nil, nil},
-      {"iTerm2", "data", monitor1, positions.left66, nil, nil},
-      {"iTerm2", "sbt", monitor1, positions.left66, nil, nil},
-      {"iTerm2", "shell", monitor1, positions.left66, nil, nil},
-      {"iTerm2", "Staging", monitor1, positions.left75, nil, nil},
-      {"iTerm2", "Prod", monitor1, positions.left75, nil, nil},
-
-      -- {"Messages", nil, laptop_monitor, positions.messages, nil, nil},
+      {"iTerm2", nil, home_monitor, positions.maximized, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
-      -- {"Spotify", nil, laptop_monitor, positions.maximized, nil, nil},
-      -- {"Spotify", nil, monitor1, positions.centered, nil, nil},
-
       {"Music", nil, laptop_monitor, positions.maximized, nil, nil},
       {"Messages", nil, laptop_monitor, positions.maximized, nil, nil},
-      {"Amplitube 5", nil, monitor1, positions.amplitube, nil, nil},
+      {"Amplitube 5", nil, home_monitor, positions.amplitube, nil, nil},
+    }
+  },
+  {
+    name = "Music (ext monitor)",
+    description = "layout for music making with the big external monitor",
+    layout = {
+      {"Emacs", nil, home_monitor, positions.left50, nil, nil},
+      {"Google Chrome", nil, home_monitor, positions.left50, nil, nil},
+      {"iTerm2", nil, home_monitor, positions.maximized, nil, nil},
+      {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Music", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Messages", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Amplitube 5", nil, home_monitor, positions.amplitube, nil, nil},
     }
   }
+
 }
 
 currentLayout = null
