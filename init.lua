@@ -8,6 +8,7 @@ home_lg = "LG HDR WQHD"
 -- Alias my "big" home monitor for auto-layout to work
 home_monitor = home_lg
 
+-- Various Audio interfaces I use for output
 laptop_speakers = "MacBook Pro Speakers"
 usb_speakers = "USB Audio Device"
 dell_speakers = home_dell
@@ -15,6 +16,9 @@ lg_speakers = home_lg
 airpods = "Justin’s AirPods Pro"
 airpods_work = "Justin’s AirPods Pro - Find My"
 irig = "iRig HD 2"
+blackhole = "BlackHole 2ch"
+headphones = "External Headphones"
+umc204hd = "UMC204HD 192k"
 
 local log = hs.logger.new('justin', 'debug')
 
@@ -148,7 +152,7 @@ positions = {
 
   messages = {x=0.45, y=0, w=0.55, h=0.9},
   devtools = {x=0.1, y=0.15, w=0.6, h=0.7},
-  amplitube = {x=0.55, y=0.15, w=0.40, h=1.0}
+  amplitube = {x=0.55, y=0.15, w=0.40, h=0.7}
 }
 
 layouts = {
@@ -293,6 +297,12 @@ hs.urlevent.bind(
       speakers = airpods_work
     elseif device == "irig" then
       speakers = irig
+    elseif device == "blackhole" then
+      speakers = blackhole
+    elseif device == "headphones" then
+      speakers = headphones
+    elseif device == "umc204hd" then
+      speakers = umc204hd
     end
     -- hs.alert.show("Changing to audio: " .. device)
     hs.notify.new({title="Changing audio", informativeText="speakers: " .. speakers}):send()
