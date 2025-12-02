@@ -90,10 +90,28 @@ Install:andUse("MiroWindowsManager",
                }
 )
 
+-- Vifari - vimium port for Safari More details here: https://github.com/dzirtusss/vifari I have
+-- this cloned into ~/code/personal/vifari/ which is symlinked into hammerspoon's Spoons subdir as
+-- "Vifari.spoon" (symlink the checkout dir, not the init.lua itself.)
+--
+-- No need to use SpoonInstall here as this is a spoon we maintain
+hs.loadSpoon("Vifari")
+
+-- -----------------------------------------------------------------------------
+-- Vifari
+
+spoon.Vifari:start({
+    smoothScroll = true,
+    scrollStep = 100,
+    showLogs = true,
+    disableOnSites = {
+      "^https?://mail.google.com/.*",
+      "^https?://calendar.google.com/.*",
+    },
+})
 
 -- -----------------------------------------------------------------------------
 -- Window function(s)
-
 
 -- Move window to the "other" monitor
 function moveToOtherMonitor()
@@ -163,6 +181,7 @@ layouts = {
       {"Emacs", nil, laptop_monitor, positions.maximized, nil, nil},
       -- {"IntelliJ IDEA", nil, laptop_monitor, positions.maximized, nil, nil},
       {"Google Chrome", nil, laptop_monitor, positions.maximized, nil, nil},
+      {"Safari", nil, laptop_monitor, positions.maximized, nil, nil},
       -- {"Kiwi for Gmail Lite", nil, laptop_monitor, positions.maximized, nil, nil},
       {"iTerm2", "", laptop_monitor, positions.maximized, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
@@ -176,6 +195,7 @@ layouts = {
       {"Emacs", nil, home_monitor, positions.maximized, nil, nil},
       {"Google Chrome", nil, home_monitor, positions.right66, nil, nil},
       {"Google Chrome", "DevTools", home_monitor, positions.devtools, nil, nil},
+      {"Safari", nil, home_monitor, positions.right66, nil, nil},
       -- A few alias' for the various tabs I have open and may be on top in my iTerm2
       {"iTerm2", nil, home_monitor, positions.maximized, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
@@ -190,6 +210,7 @@ layouts = {
     layout = {
       {"Emacs", nil, home_monitor, positions.left50, nil, nil},
       {"Google Chrome", nil, home_monitor, positions.left50, nil, nil},
+      {"Safari", nil, home_monitor, positions.left50, nil, nil},
       {"iTerm2", nil, home_monitor, positions.maximized, nil, nil},
       {"Slack", nil, laptop_monitor, positions.maximized, nil, nil},
       {"Music", nil, laptop_monitor, positions.maximized, nil, nil},
