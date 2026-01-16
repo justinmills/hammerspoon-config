@@ -291,6 +291,7 @@ function windowLayoutUrlEventHandler(eventName, params)
   hs.notify.new({title="Unable to find layout", informativeText="layout: " .. layout_name}):send()
 end
 hs.urlevent.bind("windowLayout", windowLayoutUrlEventHandler)
+hs.urlevent.bind("windowlayout", windowLayoutUrlEventHandler)
 
 -- -----------------------------------------------------------------------------
 -- Watch for audio event changes and (optionally) automatically switch when
