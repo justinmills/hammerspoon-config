@@ -277,21 +277,21 @@ screenwatcher:start()
 
 -- Similar to the audio hook for web urls let's set one up for window layouts so we can trigger it via Alfred
 -- Test with open -g hammerspoon://windowLayout?layout=Music%20%28ext%20monitor%29
-hs.urlevent.bind(
-  "windowLayout",
-  function(eventName, params)
-    layout_name = params["layout"]
-    for _, layout in ipairs(layouts) do
-      if layout.name == layout_name then
-        applyLayout(layout)
-        hs.notify.new({title="Changing layout", informativeText="layout: " .. layout_name}):send()
-        return
-      end
+function windowLayoutUrlEventHandler(eventName, params)
+  layout_name = params["layout"]
+  print("Switching to windows layout " .. layout_name)
+  for _, layout in ipairs(layouts) do
+    if layout.name == layout_name then
+      applyLayout(layout)
+      hs.notify.new({title="Changing layout", informativeText="layout: " .. layout_name}):send()
+      return
     end
-
-    hs.notify.new({title="Unable to find layout", informativeText="layout: " .. layout_name}):send()
   end
-)
+
+  hs.notify.new({title="Unable to find layout", informativeText="layout: " .. layout_name}):send()
+end
+hs.urlevent.bind("windowLayout", windowLayoutUrlEventHandler)
+hs.urlevent.bind("windowlayout", windowLayoutUrlEventHandler)
 
 -- -----------------------------------------------------------------------------
 -- Watch for audio event changes and (optionally) automatically switch when
